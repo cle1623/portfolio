@@ -75,7 +75,7 @@ if($send_mail) {
         <div class="row-fluid about">
             <div class="span12">
                 <h3>Hello!</h3>
-                <p>My name is Christine Vo, and I am a web developer.  I mostly specialize in front-end development; however, I love discovering </p>
+                <p>My name is Christine Vo, and I am a web developer in Tempe, Arizona.  I mostly specialize in front-end development, but I love</p>
             </div>
         </div>
         <div class="row-fluid skills" id="skills">
