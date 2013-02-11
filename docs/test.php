@@ -16,7 +16,7 @@ if($_POST['submit']) {
 		$email_message .= 'Email: ' . $email . '\n';
 		$email_message .= 'Message: ' . $comments;
 		
-		$mail_snet = mail($to,$subject,$email_message,
+		$mail_sent = mail($to,$subject,$email_message,
 			"From: " . $_POST['inputEmail'] . "\n" .
 			"MIME-Version: 1.0\n" .
 			"Content-type: text/html; charset=iso-8859-1");
@@ -152,7 +152,7 @@ if($_POST['submit']) {
 	        						There was a missing field on the form.  Please make sure you enter your details and comments in all the boxes provided.
 	        					</div>
 	        				<?php } ?>
-			        		<form class="form-horizontal" name='contact_form' method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '#contact'; ?>">
+			        		<form class="form-horizontal" name='contact_form' method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '#contact'; ?>" onsubmit="return validate_form()">
 								<fieldset>
 									<div class="control-group">
 										<label class="control-label" for="inputName">Name</label>
@@ -253,11 +253,6 @@ if($_POST['submit']) {
                 return false;
             }
             return true;
-        }
-        
-        function createConfirm() {
-        	var alert_confirm = $('<div />').addClass('alert alert-success').text('Thank-you for your input!  I will respond to your message as soon as I can.');
-        	$('div#contact form fieldset').append(alert_confirm);
         }
         
         function validateEmail(email) {
