@@ -1,3 +1,34 @@
+<?php
+
+if($_POST['submit']) {
+	if(empty($_POST['inputName']) || empty($_POST['inputEmail']) || empty($_POST['inputComments'])) {
+		$error = true;
+	} else {
+		$to = 'cvo.media@gmail.com';
+		
+		$name = $_POST['inputName'];
+		$email = $_POST['inputEmail'];
+		$comments = $_POST['inputComments'];
+		
+		$subject = $name . ' has sent you a message through Mousefolio';
+		
+		$email_message = 'Name: ' . $name . '\n';
+		$email_message .= 'Email: ' . $email . '\n';
+		$email_message .= 'Message: ' . $comments;
+		
+		$mail_snet = mail($to,$subject,$email_message,
+			"From: " . $_POST['inputEmail'] . "\n" .
+			"MIME-Version: 1.0\n" .
+			"Content-type: text/html; charset=iso-8859-1");
+			
+		if($mail_sent) {
+			$sent = true;
+		}
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -116,33 +147,43 @@
 	        		<p>So enough about me, is there anything you'd like to say?  Whether it's a question about my skills, a comment about my work, or even constructive criticism about my coding, I'm more than happy to hear from you!</p>
 	        		<div class="row-fluid">
 	        			<div class="span6 offset3">
-			        		<form class="form-horizontal" name='contact_form' method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>"  onsubmit="return validate_form()">
+	        				<?php if($error == true) { ?>
+	        					<div class="alert alert-error">
+	        						There was a missing field on the form.  Please make sure you enter your details and comments in all the boxes provided.
+	        					</div>
+	        				<?php } ?>
+			        		<form class="form-horizontal" name='contact_form' method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '#contact'; ?>">
 								<fieldset>
 									<div class="control-group">
 										<label class="control-label" for="inputName">Name</label>
 										<div class="controls">
-									    	<input type="text" id="inputName" placeholder="Hey You">
+									    	<input type="text" id="inputName" name="inputName" placeholder="Hey You">
 									    </div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="inputEmail">Email</label>
 										<div class="controls">
-									    	<input type="email" id="inputEmail" placeholder="your-email@email.com">
+									    	<input type="email" id="inputEmail" name="inputEmail" placeholder="your-email@email.com">
 									    </div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="inputComments">Comments or Questions</label>
 										<div class="controls">
-											<textarea rows="4" id="inputComments"></textarea>
+											<textarea rows="4" id="inputComments" name="inputComments"></textarea>
 									    </div>
 									</div>
 									<div class="control-group">
 										<div class="controls">
-											<button type="submit" name="submit" class="btn">Submit</button>
+											<input type="submit" name="submit" class="btn" value="Submit">
 										</div>
 									</div>
 								</fieldset>
 							</form>
+							<?php if($sent == true) { ?>
+	        					<div class="alert alert-success">
+	        						Thank-you for your input!  I will respond to your message as soon as I can.
+	        					</div>
+	        				<?php } ?>
 	        			</div>
 	        		</div>
 	        	</div>
