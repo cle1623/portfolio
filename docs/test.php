@@ -1,6 +1,6 @@
 <?php
 
-if($_POST['submit']) {
+if(isset($_POST['submit'])) {
 	if(empty($_POST['inputName']) || empty($_POST['inputEmail']) || empty($_POST['inputComments'])) {
 		$error = true;
 	} else {
@@ -114,7 +114,7 @@ if($_POST['submit']) {
 	        			<div class="span4 other-software">
 	        				<h4 class="title">Other Software</h4>
 	        				<ul>
-	        					<li>XAAMP</li>
+	        					<li>XAMPP</li>
 	        					<li>phpMyAdmin</li>
 	        					<li>Clarizen</li>
 	        					<li>Wordpress</li>

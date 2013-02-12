@@ -1,26 +1,32 @@
 <?php
 
-$name = $_POST['inputName'];
-$email = $_POST['inputEmail'];
-$comments = $_POST['inputComments'];
-
-$to = "cvo.media@gmail.com";
-
-$email_message = 'Name: ' . $name . '\n';
-$email_message .= 'Email: ' . $email . '\n';
-$email_message .= 'Message: ' . $comments;
-
-$subject = $name . ' has sent you a message through Mousefolio';
-
-$send_mail = mail($to,$subject,$email_message,
-    "From: " . $_POST['inputEmail'] . "\n" .
-        "MIME-Version: 1.0\n" .
-        "Content-type: text/html; charset=iso-8859-1");
-
-if($send_mail) {
-    $sent = true;
-} else {
-    $sent = false;
+if(isset($_POST['submit'])) {
+	$name = $_POST['inputName'];
+	$email = $_POST['inputEmail'];
+	$comments = $_POST['inputComments'];
+	
+	$to = "cvo.media@gmail.com";
+	
+	$email_message = 'Name: ' . $name . '\n';
+	$email_message .= 'Email: ' . $email . '\n';
+	$email_message .= 'Message: ' . $comments;
+	
+	$subject = $name . ' has sent you a message through Mousefolio';
+	
+	$header = 'From: ' . $_POST['inputEmail'] . '\n';
+	
+	$send_mail = mail($to,$subject,$email_message,$header);
+	/*
+	$send_mail = mail($to,$subject,$email_message,
+	    "From: " . $_POST['inputEmail'] . "\n" .
+	        "MIME-Version: 1.0\n" .
+	        "Content-type: text/html; charset=iso-8859-1");
+	*/
+	if($send_mail) {
+	    $sent = true;
+	} else {
+	    $sent = false;
+	}
 }
 
 ?>
@@ -110,7 +116,7 @@ if($send_mail) {
                     <div class="span4 other-software">
                         <h4 class="title">Other Software</h4>
                         <ul>
-                            <li>XAAMP</li>
+                            <li>XAMPP</li>
                             <li>phpMyAdmin</li>
                             <li>Clarizen</li>
                             <li>Wordpress</li>
@@ -143,8 +149,8 @@ if($send_mail) {
                 <p>So enough about me, is there anything you'd like to say?  Whether it's a question about my skills, a comment about my work, or even constructive criticism about my coding, I'm more than happy to hear from you!</p>
                 <div class="row-fluid">
                     <div class="span12 error-message">
-                        <?php if($sent == false) { ?>
-                        <div class="alert alert-error">
+                        <?php if(isset($_POST['submit']) && $sent == false) { ?>
+                        <div class="alert alert-error text-center">
                             A problem occurred while your message was being sent.  Please try again later.
                         </div>
                         <?php } ?>
@@ -180,8 +186,8 @@ if($send_mail) {
                                 </div>
                             </fieldset>
                         </form>
-                        <?php if($sent == true) { ?>
-                        <div class="alert alert-success">
+                        <?php if(isset($_POST['submit']) && $sent == true) { ?>
+                        <div class="alert alert-success text-center">
                             Thank-you for your input!  I will respond to your message as soon as I can.
                         </div>
                         <?php } ?>
