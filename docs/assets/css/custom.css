@@ -4,12 +4,16 @@ div.header {
 }
 
 div.header img.logo {
-	max-height: 200px;
+	/*max-height: 90px;*/
+	margin-right: 25px;
+	float: left;
 }
 
 div.header h1 {
-	margin-bottom: 0;
+	margin: 25px 0;
 	text-transform: uppercase;
+	font-family: 'Special Elite','American Typewriter','Courier New',Courier,monospace;
+	font-size: 50px;
 }
 
 div.header h4 {
@@ -43,9 +47,14 @@ div.main {
 	padding: 10px 0;
 }
 
+div.main div.section {
+	padding-bottom: 30px;
+}
+
 div.main h3 {
-	padding-top: 42px;
+	/*padding-top: 42px;*/
 	text-transform: uppercase;
+	font-family: 'Special Elite','American Typewriter','Courier New',Courier,monospace;
 }
 
 div.skills h4.title {
@@ -79,6 +88,8 @@ div.footer {
     }
     div.header img.logo {
         /*max-width: 50%;*/
+       float: none;
+       margin: 0;
     }
     div.header h3 {
     	text-align: center;
@@ -98,13 +109,19 @@ div.footer {
 /* Landscape phones and down */
 @media (max-width: 480px) {
     div.header img.logo {
-        max-width: 80%;
+        /*max-width: 80%;*/
+    }
+    div.header h1 {
+    	font-size: 30px;
+    }
+    div.header h1 small {
+    	font-size: 18px;
     }
     div.navigation ul.nav {
         text-align: center;
     }
     div.navigation ul.nav li a {
-        padding: 0 2%;
+        padding: 0;
     }
     div.works div.thumbnail {
         width: 100%;
