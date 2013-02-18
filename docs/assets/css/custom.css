@@ -91,6 +91,12 @@ div.footer {
        float: none;
        margin: 0;
     }
+    div.header h1 {
+    	font-size: 30px;
+    }
+    div.header h1 small {
+    	font-size: 18px;
+    }
     div.header h3 {
     	text-align: center;
     }
@@ -111,17 +117,19 @@ div.footer {
     div.header img.logo {
         /*max-width: 80%;*/
     }
+    /*
     div.header h1 {
     	font-size: 30px;
     }
     div.header h1 small {
     	font-size: 18px;
     }
+    */
     div.navigation ul.nav {
         text-align: center;
     }
     div.navigation ul.nav li a {
-        padding: 0;
+        padding: 0 5px;
     }
     div.works div.thumbnail {
         width: 100%;

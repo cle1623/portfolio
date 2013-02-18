@@ -58,7 +58,7 @@ if(isset($_POST['submit'])) {
         </div>
     </div>
 </div>
-<div class="navigation" data-spy="affix" data-offset-top="150">
+<div class="navigation hidden-phone" data-spy="affix" data-offset-top="150">
     <div class="container">
         <div class="row-fluid">
             <ul class="nav">
@@ -70,8 +70,8 @@ if(isset($_POST['submit'])) {
         </div>
     </div>
 </div>
-<!--
-<div class="navigation visible-tablet" data-spy="affix" data-offset-top="320">
+<!---->
+<div class="navigation visible-phone" data-spy="affix" data-offset-top="276">
     <div class="container">
         <div class="row-fluid">
             <ul class="nav">
@@ -83,7 +83,7 @@ if(isset($_POST['submit'])) {
         </div>
     </div>
 </div>
--->
+
 <div class="main">
     <div class="container">
         <div class="row-fluid section about" id="about">
@@ -156,9 +156,9 @@ if(isset($_POST['submit'])) {
                 <h3>Contact Me</h3>
                 <p>So enough about me, is there anything you'd like to say?  Whether it's a question about my skills, a comment about my work, or even constructive criticism about my coding, I'm more than happy to hear from you!</p>
                 <div class="row-fluid">
-                    <div class="span12 error-message">
+                    <div class="span12 error-message text-center">
                         <?php if(isset($_POST['submit']) && $sent == false) { ?>
-                        <div class="alert alert-error text-center">
+                        <div class="alert alert-error">
                             A problem occurred while your message was being sent.  Please try again later.
                         </div>
                         <?php } ?>
@@ -166,8 +166,7 @@ if(isset($_POST['submit'])) {
                 </div>
                 <div class="row-fluid">
                     <div class="span6 offset3">
-
-                        <form class="form-horizontal" name='contact_form' method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']) . '#contact'; ?>" onsubmit="return validate_form()">
+                        <form class="form-horizontal" name='contact_form' method="post" action="http://www.mousefolio.com#contact" onsubmit="return validate_form()">
                             <fieldset>
                                 <div class="control-group">
                                     <label class="control-label" for="inputName">Name</label>
@@ -196,7 +195,7 @@ if(isset($_POST['submit'])) {
                         </form>
                         <?php if(isset($_POST['submit']) && $sent == true) { ?>
                         <div class="alert alert-success text-center">
-                            Thank-you for your input!  I will respond to your message as soon as I can.
+                            Thank you for your input!  I will respond to your message as soon as I can.
                         </div>
                         <?php } ?>
                     </div>
